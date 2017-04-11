@@ -1,0 +1,54 @@
+{
+  "name": "modern-angularjs-starter",
+  "version": "0.0.1",
+  "description": "Base project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently --kill-others \"webpack-dev-server --host 0.0.0.0\" \"npm run docs\"",
+    "docs_gen": "jsdoc -d jsdoc_output/ public/",
+    "docs_watch": "watch \"npm run docs_gen\" public",
+    "docs_serve": "echo Docs are being served on port 8082! && live-server -q --port=8082 --no-browser jsdoc_output/",
+    "docs": "concurrently --kill-others \"npm run docs_serve\" \"npm run docs_watch\"",
+    "postinstall": "bower install",
+    "webpack": "webpack",
+    "test": "mocha-webpack ./public/superAwesomeComponent/theComponent.spec.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/narthur157/modern-angularjs-starter.git"
+  },
+  "keywords": [
+    "angularjs",
+    "webpack",
+    "sass",
+    "es6",
+    "es7",
+    "components"
+  ],
+  "author": "Nick Arthur",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/narthur157/modern-angularjs-starter/issues"
+  },
+  "homepage": "https://github.com/narthur157/modern-angularjs-starter#readme",
+  "devDependencies": {
+    "angular": "^1.6.4",
+    "babel-cli": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "chai": "^3.5.0",
+    "concurrently": "^3.4.0",
+    "css-loader": "^0.28.0",
+    "inject-loader": "^3.0.0",
+    "live-server": "^1.2.0",
+    "mocha": "^3.2.0",
+    "mocha-webpack": "^0.7.0",
+    "node-sass": "^4.5.2",
+    "raw-loader": "^0.5.1",
+    "sass-loader": "^6.0.3",
+    "sinon": "^2.1.0",
+    "style-loader": "^0.16.1",
+    "watch": "^1.0.2",
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "^2.4.2"
+  }
+}

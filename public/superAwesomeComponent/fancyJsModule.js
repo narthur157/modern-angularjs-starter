@@ -1,0 +1,1 @@
+export const fancyFunction = (a, b) => a + b * 3
