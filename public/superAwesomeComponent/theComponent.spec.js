@@ -1,24 +1,27 @@
 /* eslint-disable */
 import chai from 'chai'
 import sinon from 'sinon'
-console.log('running')
-const theComponentInjector = require('inject-loader!./theComponent.js')
+
+const theControllerInjector = require('inject-loader!./theComponentController.js')
 
 let {expect, should, assert} = chai
 
 describe('superAwesomeComponent', function() {
   let stub 
-  let theComponent
+  let theComponentController
   let controller
 
-  beforeEach(function setupCompentMock() {
-    stub = sinon.stub.returns(1)
+  beforeEach(function setupComponent () {
+    stub = sinon.stub().returns(1)
 
-    theComponent = theComponentInjector({
+    theComponentController = theControllerInjector({
+      // The module is really simple, so it's not really necessary to mock it
+      // In a real app, it could be much more complex (ie, something that makes API calls)
       './fancyJsModule.js': stub
-    })
-
-    controller = new theComponent.controller()
+    }).ComponentController
+    controller = new theComponentController()
+    controller.someOutput = sinon.stub()
+    controller.someInput = 1
   })
   describe('doSuperThings', function() {
     it('calls fancyFunction', function() {
